@@ -3,130 +3,76 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Yasmin Siqueira Lobo | Embraer</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+  <title>Yasmin Siqueira Lobo | Portfólio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet">
   <style>
     :root {
       --embraer-blue: #003366;
-      --embraer-dark-blue: #002244;
+      --embraer-dark-blue: #001a33;
       --embraer-light-blue: #4d88c7;
       --white: #ffffff;
       --light-gray: #f5f7fa;
+      --dark-gray: #333333;
       --max-width: 1200px;
     }
 
     * {
-      padding: 0;
       margin: 0;
+      padding: 0;
       box-sizing: border-box;
     }
 
     body {
-      font-family: "Poppins", sans-serif;
+      font-family: 'Poppins', sans-serif;
       background-color: var(--white);
-      color: var(--embraer-blue);
+      color: var(--dark-gray);
       line-height: 1.6;
+      overflow-x: hidden;
     }
 
-    .section__container {
-      max-width: var(--max-width);
-      margin: auto;
-      padding: 5rem 1rem;
-    }
-
-    .btn {
-      padding: 0.75rem 2rem;
-      outline: none;
-      border: none;
-      font-size: 1rem;
-      color: var(--white);
-      background-color: var(--embraer-blue);
-      border-radius: 2rem;
-      border: 1px solid var(--embraer-blue);
-      transition: 0.3s;
-      cursor: pointer;
-      display: inline-block;
-      margin: 0.5rem;
-      text-decoration: none;
-      text-align: center;
-    }
-
-    .btn:hover {
-      background-color: var(--embraer-dark-blue);
-      transform: translateY(-3px);
-      box-shadow: 0 5px 15px rgba(0, 51, 102, 0.2);
-    }
-
-    .btn-outline {
-      background-color: transparent;
-      color: var(--embraer-blue);
-      border-color: var(--embraer-blue);
-    }
-
-    .btn-outline:hover {
-      background-color: var(--embraer-blue);
-      color: var(--white);
-    }
-
-    img {
-      display: flex;
-      width: 100%;
-      border-radius: 10px;
-    }
-
-    a {
-      text-decoration: none;
-      transition: 0.3s;
-    }
-
-    ul {
-      list-style: none;
-    }
-
-    /* Navigation */
-    nav {
-      position: fixed;
-      width: 100%;
+    /* Header */
+    .header {
       background-color: var(--white);
       box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      position: fixed;
+      width: 100%;
       z-index: 100;
     }
 
-    .nav__container {
+    .header-container {
       max-width: var(--max-width);
-      margin: auto;
-      padding: 1rem;
+      margin: 0 auto;
+      padding: 1rem 2rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
     }
 
-    .nav__logo {
-      font-size: 1.5rem;
+    .logo {
+      font-size: 1.8rem;
       font-weight: 700;
       color: var(--embraer-blue);
+      text-decoration: none;
     }
 
-    .nav__logo span {
-      color: var(--embraer-light-blue);
-    }
-
-    .nav__links {
+    .nav-links {
       display: flex;
       gap: 2rem;
     }
 
-    .nav__links a {
+    .nav-links a {
       color: var(--embraer-blue);
       font-weight: 500;
+      text-decoration: none;
       position: relative;
+      padding: 0.5rem 0;
     }
 
-    .nav__links a::after {
+    .nav-links a::after {
       content: '';
       position: absolute;
-      bottom: -5px;
+      bottom: 0;
       left: 0;
       width: 0;
       height: 2px;
@@ -134,93 +80,91 @@
       transition: width 0.3s;
     }
 
-    .nav__links a:hover::after {
+    .nav-links a:hover::after {
       width: 100%;
     }
 
-    /* Header */
-    header {
-      padding-top: 80px;
-      background: linear-gradient(135deg, var(--white) 0%, var(--light-gray) 100%);
-    }
-
-    .header__container {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 2rem;
-      align-items: center;
-    }
-
-    .header__image {
-      position: relative;
+    /* Hero Section */
+    .hero {
+      background: linear-gradient(rgba(0, 51, 102, 0.8), rgba(0, 51, 102, 0.8)), 
+                  url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1472&q=80');
+      background-size: cover;
+      background-position: center;
+      color: var(--white);
+      padding: 10rem 2rem;
       text-align: center;
     }
 
-    .header__image img {
-      max-width: 400px;
+    .hero-content {
+      max-width: var(--max-width);
       margin: 0 auto;
-      border-radius: 20px;
-      box-shadow: 0 10px 30px rgba(0, 51, 102, 0.1);
     }
 
-    .header__content {
-      text-align: center;
-      padding: 2rem 0;
+    .hero h1 {
+      font-size: 3.5rem;
+      margin-bottom: 1.5rem;
+      font-weight: 700;
     }
 
-    .header__content h1 {
-      font-size: 3rem;
+    .hero p {
+      font-size: 1.2rem;
+      max-width: 800px;
+      margin: 0 auto 2rem;
+    }
+
+    .btn {
+      display: inline-block;
+      background-color: var(--white);
       color: var(--embraer-blue);
-      margin-bottom: 1rem;
-      line-height: 1.2;
+      padding: 0.8rem 2rem;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s;
+      margin: 0 0.5rem;
     }
 
-    .header__content h2 {
-      font-size: 1.5rem;
-      font-weight: 400;
-      color: var(--embraer-blue);
-      margin-bottom: 1rem;
+    .btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
     }
 
-    .header__content p {
-      color: var(--embraer-blue);
-      margin-bottom: 2rem;
-      max-width: 600px;
-      margin-left: auto;
-      margin-right: auto;
+    .btn-outline {
+      background-color: transparent;
+      color: var(--white);
+      border: 2px solid var(--white);
     }
 
-    .header__btns {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 1rem;
+    .btn-outline:hover {
+      background-color: rgba(255, 255, 255, 0.1);
     }
 
-    /* Sections */
+    /* About Section */
     .section {
-      padding: 4rem 0;
-    }
-
-    .section:nth-child(even) {
-      background-color: var(--light-gray);
-    }
-
-    .section__title {
-      font-size: 2.5rem;
-      text-align: center;
-      margin-bottom: 3rem;
-      color: var(--embraer-blue);
+      padding: 5rem 2rem;
       position: relative;
     }
 
-    .section__title::after {
-      content: "";
+    .section-container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    .section-title {
+      font-size: 2.5rem;
+      color: var(--embraer-blue);
+      margin-bottom: 3rem;
+      text-align: center;
+      position: relative;
+    }
+
+    .section-title::after {
+      content: '';
       display: block;
       width: 80px;
       height: 4px;
-      background: var(--embraer-blue);
-      margin: 15px auto;
+      background-color: var(--embraer-light-blue);
+      margin: 1rem auto 0;
     }
 
     .grid {
@@ -229,412 +173,477 @@
       gap: 2rem;
     }
 
-    .card {
-      background: var(--white);
-      border-radius: 10px;
-      padding: 2rem;
-      box-shadow: 0 5px 15px rgba(0, 51, 102, 0.1);
-      transition: transform 0.3s ease;
-      border: 1px solid rgba(0, 51, 102, 0.1);
+    .about-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: center;
     }
 
-    .card:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 15px 30px rgba(0, 51, 102, 0.15);
+    .about-image {
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+      height: 300px;
+      background-color: #e0e0e0;
     }
 
-    .card h3 {
-      font-size: 1.5rem;
-      color: var(--embraer-blue);
-      margin-bottom: 1rem;
-      position: relative;
-      padding-bottom: 0.5rem;
+    .about-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
     }
 
-    .card h3::after {
-      content: "";
+    .about-text p {
+      margin-bottom: 1.5rem;
+    }
+
+    /* Airplane Container */
+    .airplane-container {
       position: absolute;
-      bottom: 0;
+      top: -80px; /* Ajustado para ficar mais acima */
       left: 0;
-      width: 50px;
-      height: 3px;
-      background-color: var(--embraer-light-blue);
+      right: 0;
+      height: 50px;
     }
 
-    .card ul {
-      margin-top: 1rem;
-    }
-
-    .card ul li {
-      margin-bottom: 0.5rem;
-      position: relative;
-      padding-left: 1.5rem;
-    }
-
-    .card ul li::before {
-      content: "•";
-      color: var(--embraer-light-blue);
+    /* Airplane Animation */
+    .airplane {
       position: absolute;
-      left: 0;
-      font-size: 1.2rem;
-    }
-
-    .pill {
-      display: inline-block;
-      background-color: var(--embraer-light-blue);
-      color: white;
-      padding: 0.3rem 1rem;
-      border-radius: 20px;
-      margin: 0.3rem;
-      font-size: 0.9rem;
-    }
-
-    .culture-pillar {
-      background-color: rgba(0, 51, 102, 0.05);
-      border-left: 4px solid var(--embraer-blue);
-      padding: 1.5rem;
-      border-radius: 0 8px 8px 0;
-      margin: 2rem 0;
-    }
-
-    .culture-pillar h3 {
-      color: var(--embraer-blue);
-      margin-bottom: 0.5rem;
-    }
-
-    .timeline {
-      position: relative;
-      max-width: 800px;
-      margin: 0 auto;
-    }
-
-    .timeline::before {
-      content: '';
-      position: absolute;
-      width: 2px;
-      background-color: var(--embraer-light-blue);
       top: 0;
-      bottom: 0;
-      left: 50%;
-      margin-left: -1px;
-    }
-
-    .timeline-item {
-      padding: 10px 40px;
-      position: relative;
-      width: 50%;
-      box-sizing: border-box;
-    }
-
-    .timeline-item::after {
-      content: '';
-      position: absolute;
-      width: 20px;
-      height: 20px;
-      background-color: var(--white);
-      border: 4px solid var(--embraer-blue);
-      border-radius: 50%;
-      top: 15px;
+      left: -50px;
+      width: 50px;
+      height: 50px;
+      background: url('https://img.icons8.com/color/50/003366/airplane-take-off.png') no-repeat center;
+      background-size: contain;
+      animation: fly 10s linear forwards;
       z-index: 1;
     }
 
-    .left {
-      left: 0;
-      text-align: right;
+    .airplane:hover {
+      animation-play-state: paused;
+      transform: scale(1.2);
     }
 
-    .right {
-      left: 50%;
-      text-align: left;
+    @keyframes fly {
+      0% { left: -50px; }
+      100% { left: calc(100% + 50px); }
     }
 
-    .left::after {
-      right: -10px;
+    /* Values Section */
+    .values {
+      background-color: var(--light-gray);
     }
 
-    .right::after {
-      left: -10px;
-    }
-
-    .timeline-content {
-      padding: 20px;
+    .value-card {
       background-color: var(--white);
-      border-radius: 8px;
-      box-shadow: 0 5px 15px rgba(0, 51, 102, 0.1);
-    }
-
-    .timeline-content h3 {
-      color: var(--embraer-blue);
-      margin-bottom: 0.5rem;
-    }
-
-    .timeline-content p {
-      color: var(--embraer-blue);
-    }
-
-    /* Footer */
-    footer {
-      background-color: var(--embraer-blue);
-      color: var(--white);
-      padding: 3rem 0;
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
       text-align: center;
+      transition: transform 0.3s;
     }
 
-    .footer__logo {
-      font-size: 1.5rem;
-      font-weight: 700;
+    .value-card:hover {
+      transform: translateY(-10px);
+    }
+
+    .value-icon {
+      font-size: 3rem;
+      color: var(--embraer-light-blue);
+      margin-bottom: 1.5rem;
+    }
+
+    .value-card h3 {
+      color: var(--embraer-blue);
       margin-bottom: 1rem;
     }
 
-    .footer__text {
-      max-width: 600px;
-      margin: 0 auto 2rem;
+    /* Projects Section */
+    .project-card {
+      position: relative;
+      border-radius: 10px;
+      overflow: hidden;
+      height: 300px;
     }
 
-    .socials {
+    .project-card .placeholder {
+      height: 100%;
+      background-color: #e0e0e0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #666;
+    }
+
+    .project-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s;
+    }
+
+    .project-card:hover img {
+      transform: scale(1.1);
+    }
+
+    .project-info {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: rgba(0, 51, 102, 0.9);
+      color: var(--white);
+      padding: 1.5rem;
+      transform: translateY(100%);
+      transition: transform 0.3s;
+    }
+
+    .project-card:hover .project-info {
+      transform: translateY(0);
+    }
+
+    /* Certifications Section */
+    .certification-card {
+      background-color: var(--white);
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+      text-align: center;
+      transition: transform 0.3s;
+      height: 200px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .certification-card:hover {
+      transform: translateY(-10px);
+    }
+
+    .certification-card h3 {
+      color: var(--embraer-blue);
+      margin-bottom: 1rem;
+    }
+
+    /* Courses Section */
+    .course-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+
+    .course-item {
+      display: block;
+      padding: 0.5rem 1rem;
+      background-color: var(--light-gray);
+      border-left: 4px solid var(--embraer-blue);
+      border-radius: 5px;
+      font-weight: 500;
+      text-decoration: none;
+      color: var(--dark-gray);
+      transition: background-color 0.3s;
+    }
+
+    .course-item:hover {
+      background-color: var(--embraer-light-blue);
+      color: var(--white);
+    }
+
+    /* Contact Section */
+    .contact {
+      background-color: var(--embraer-blue);
+      color: var(--white);
+      text-align: center;
+    }
+
+    .contact .section-title {
+      color: var(--white);
+    }
+
+    .contact .section-title::after {
+      background-color: var(--white);
+    }
+
+    .contact-info {
       display: flex;
       justify-content: center;
-      gap: 1rem;
-      margin-bottom: 2rem;
+      gap: 2rem;
+      margin-top: 2rem;
     }
 
-    .socials a {
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+    }
+
+    /* Footer */
+    .footer {
+      background-color: var(--embraer-dark-blue);
+      color: var(--white);
+      padding: 2rem;
+      text-align: center;
+    }
+
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      margin: 1.5rem 0;
+    }
+
+    .social-links a {
       color: var(--white);
       font-size: 1.5rem;
       transition: transform 0.3s;
     }
 
-    .socials a:hover {
+    .social-links a:hover {
       transform: translateY(-5px);
     }
 
-    /* Responsive */
     @media (max-width: 768px) {
-      .nav__container {
+      .header-container {
         flex-direction: column;
+        padding: 1rem;
       }
 
-      .nav__links {
+      .nav-links {
         margin-top: 1rem;
         gap: 1rem;
       }
 
-      .header__content h1 {
+      .hero {
+        padding: 8rem 1rem;
+      }
+
+      .hero h1 {
         font-size: 2.5rem;
       }
 
-      .timeline::before {
-        left: 31px;
+      .about-content {
+        grid-template-columns: 1fr;
       }
 
-      .timeline-item {
-        width: 100%;
-        padding-left: 70px;
-        padding-right: 25px;
+      .contact-info {
+        flex-direction: column;
+        gap: 1rem;
       }
 
-      .timeline-item::after {
-        left: 21px;
-      }
-
-      .left, .right {
-        left: 0;
-        text-align: left;
+      .course-list {
+        grid-template-columns: 1fr;
       }
     }
   </style>
 </head>
 <body>
-  <nav>
-    <div class="nav__container">
-      <div class="nav__logo">Yasmin<span>Siqueira</span></div>
-      <div class="nav__links">
-        <a href="#about">Sobre</a>
-        <a href="#journey">Jornada</a>
-        <a href="#skills">Habilidades</a>
-        <a href="#contact">Contato</a>
-      </div>
-    </div>
-  </nav>
 
-  <header id="home">
-    <div class="section__container header__container">
-      <div class="header__image">
-        <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=761&q=80" alt="Yasmin Siqueira Lobo">
-      </div>
-      <div class="header__content">
-        <h2>Olá, eu sou</h2>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-content">
         <h1>Yasmin Siqueira Lobo</h1>
-        <p>Candidata a estágio na <strong>Embraer</strong> com paixão por tecnologia, inovação e excelência.</p>
-        <div class="header__btns">
-          <a href="#about" class="btn">Conheça minha trajetória</a>
-          <a href="#contact" class="btn btn-outline">Entre em contato</a>
-        </div>
+      <p>Estudante de Análise e Desenvolvimento de Sistemas.</p>
+      <div style="margin-top: 2rem;">
+       
       </div>
     </div>
-  </header>
+  </section>
 
+  <!-- About Section -->
   <section id="about" class="section">
-    <div class="section__container">
-      <h2 class="section__title">Por que a Embraer?</h2>
-      <div class="grid">
-        <div class="card">
-          <h3>Minha Motivação</h3>
-          <p>Quero estagiar na <strong>Embraer</strong> porque admiro a forma como a empresa une <strong>inovação, tecnologia e excelência</strong>, impactando o setor aeronáutico mundial. Acredito que esse ambiente vai me permitir <strong>crescer profissionalmente e contribuir com soluções criativas</strong>.</p>
-          
-          <div class="culture-pillar">
-            <h3>Conectando com os Pilares da Embraer</h3>
-            <p><strong>"Pessoas que inspiram e transformam"</strong></p>
-            <p>A Embraer valoriza a transformação contínua através da colaboração e inovação. Me identifico profundamente com esse pilar, pois acredito que o crescimento acontece quando nos desafiamos e aprendemos juntos.</p>
-          </div>
+    <div style="margin-top: 2rem;">
+    <div class="airplane-container">
+      <div class="airplane"></div>
+    </div>
+    <div class="section-container">
+      <h2 class="section-title">Sobre Mim</h2>
+      <div class="about-content">
+        <div class="about-text">
+          <p>Meu nome é Yasmin Siqueira Lobo, tenho 18 anos, moro em Caçapava SP e sou estudante de Análise e Desenvolvimento de Sistemas na Faculdade SENAI. Optei por essa área para desenvolver tecnologias que transformem ideias em inovação.</p>
+           <h3>Experiência Profissional</h3>
+      <p>Estagiária – Desenvolvimento de Software no 
+ SENAI  (2025 – Presente)</p>
+         <h3>Valores:</h3>
+          <p> Excelência, integridade, inovação, empatia, fé e ética.</p>
+          <p>Hobbies: Escutar música, praticar atividades físicas e viajar</p>
+         <h3>Missão:</h3>
+          <p> Aplicar minhas habilidades para impulsionar projetos inovadores com excelência, alinhando-me a pilares importantes da Embraer.</p>
         </div>
-        
-        <div class="card">
-          <h3>Quem sou eu</h3>
-          <p>Meu nome é <strong>Yasmin Siqueira Lobo</strong>, tenho 19 anos e sou de <strong>Caçapava, São Paulo</strong>.</p>
-          <p>Atualmente estou cursando <strong>Tecnólogo em Análise e Desenvolvimento de Sistemas na Faculdade SENAI</strong>, e recentemente concluí o curso técnico na mesma área. Também estou estudando <strong>Inglês na KNN Idiomas</strong>.</p>
-          <p>Sou guiada por três pilares pessoais:</p>
-          <ul>
-            <li><strong>Fé</strong> - que me orienta a agir com ética e respeito</li>
-            <li><strong>Excelência</strong> - fazer tudo com dedicação e qualidade</li>
-            <li><strong>Comprometimento</strong> - foco total para entregar resultados</li>
-          </ul>
+        <div class="about-image">
+          <img src="Yasmin.jpeg" alt="Yasmin Siqueira Lobo">
         </div>
       </div>
     </div>
   </section>
 
-  <section id="journey" class="section">
-    <div class="section__container">
-      <h2 class="section__title">Minha Jornada</h2>
+  <!-- Values Section -->
+  <section id="values" class="section values">
+    <div class="section-container">
+      <h2 class="section-title">Pilar com o qual me identifico:</h2>
+      <div class="grid">
+        <div class="value-card">
+          <div class="value-icon">
+            <i class="ri-lightbulb-flash-line"></i>
+          </div>
+          <h3>"Tratar a complexidade com simplicidade."</h3>
+         
+        </div>
       
-      <div class="timeline">
-        <div class="timeline-item left">
-          <div class="timeline-content">
-            <h3>Formação Acadêmica</h3>
-            <p><strong>Tecnólogo em Análise e Desenvolvimento de Sistemas</strong><br>
-            Faculdade SENAI - Cursando</p>
-            <p><strong>Curso Técnico em ADS</strong><br>
-            SENAI - Concluído</p>
-            <p><strong>Inglês</strong><br>
-            KNN Idiomas - Cursando</p>
-          </div>
+  </section>
+  <!-- Formação Acadêmica -->
+<section id="formacao" class="section">
+  <div class="section-container">
+    <h2 class="section-title">Formação Acadêmica</h2>
+    <div class="grid">
+      <div class="value-card">
+        <div class="value-icon">
+          <i class="ri-code-s-slash-line"></i>
         </div>
-        
-        <div class="timeline-item right">
-          <div class="timeline-content">
-            <h3>Experiência Profissional</h3>
-            <p><strong>Estagiária em Desenvolvimento de Software</strong><br>
-            SENAI - Atual</p>
-            <ul>
-              <li>Participação na criação de um chatbot para interação entre estudantes e docentes</li>
-              <li>Implementação de metodologias ágeis</li>
-            </ul>
-          </div>
+        <h3>Técnico em Desenvolvimento de Sistemas</h3>
+        <p>SENAI (2023 – 2024)</p>
+      </div>
+      <div class="value-card">
+        <div class="value-icon">
+          <i class="ri-computer-line"></i>
         </div>
-        
-        <div class="timeline-item left">
-          <div class="timeline-content">
-            <h3>Projetos Destacados</h3>
-            <p><strong>IDS para Redes Industriais</strong><br>
-            Desenvolvimento de sistema com IA embarcada em ESP32</p>
-            <p><strong>Competições</strong><br>
-            Olimpíada Brasileira de Robótica e SP Skills em Cyber Segurança</p>
-          </div>
+        <h3>Tecnólogo em Análise e Desenvolvimento de Sistemas</h3>
+        <p>SENAI (2025 – 2027)</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Por que quero estagiar na Embraer -->
+<section id="motivo-embraer" class="section values">
+  <div class="section-container">
+    <h2 class="section-title">Por que quero estagiar na Embraer?</h2>
+    <div class="value-card">
+      <div class="value-icon">
+        <i class="ri-plane-line"></i>
+      </div>
+      <ul style="text-align:left; margin:0 auto; max-width:700px;">
+        <li>Quero trabalhar na Embraer por ser uma empresa referência em inovação e tecnologia, com forte compromisso com sustentabilidade e diversidade.</li>
+        <li>Busco crescimento profissional e aprendizado contínuo com projetos de impacto global.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- Área da Embraer em que me imagino trabalhando -->
+<section id="area-embraer" class="section">
+  <div class="section-container">
+    <h2 class="section-title">Área da Embraer em que me imagino trabalhando no futuro</h2>
+    <div class="value-card">
+      <div class="value-icon">
+        <i class="ri-settings-3-line"></i>
+      </div>
+      <ul style="text-align:left; margin:0 auto; max-width:700px;">
+        <li>Pretendo atuar na área de Desenvolvimento de Sistemas em TI, desenvolvendo soluções inovadoras que contribuam para a evolução do setor aeronáutico.</li>
+        <li>Meu objetivo é crescer dentro da Embraer, aprimorando minhas competências técnicas e, futuramente, assumir posições de liderança para impulsionar projetos estratégicos e reforçar a cultura de inovação da empresa.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- Projects Section -->
+<section id="projects" class="section">
+  <div class="section-container">
+    <h2 class="section-title">Projetos e Experiências</h2>
+    <div class="grid">
+
+      <div class="project-card">
+        <img src="obr-2022-2023.png" alt="OBR 2022-2023" class="project-image" />
+        <div class="project-info">
+          <h3>OBR - Olimpíada Brasileira de Robótica 2022-2023</h3>
+          <p>Participação na competição de robótica nacional.</p>
         </div>
-        
-        <div class="timeline-item right">
-          <div class="timeline-content">
-            <h3>Minha Visão para o Futuro</h3>
-            <p>No futuro, me vejo atuando na <strong>área de desenvolvimento e inovação</strong> da Embraer, contribuindo para projetos que impactam o futuro da aviação.</p>
-            <p>Minha missão é <strong>contribuir com inovação e excelência para o crescimento da Embraer</strong>.</p>
-          </div>
+      </div>
+
+      <div class="project-card">
+        <img src="tech-circular-2025.png" alt="Projeto Tech Circular 2025" class="project-image" />
+        <div class="project-info">
+          <h3>Projeto Tech Circular 2025</h3>
+          <p>Participação em projeto focado em tecnologia circular, promovendo inovação sustentável.</p>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <img src="sp-skills-2025.png" alt="SP Skills 2025" class="project-image" />
+        <div class="project-info">
+          <h3>SP Skills 2025 - Workshop Cybersecurity </h3>
+          <p>Participação no workshop de cibersegurança como parte do programa SP Skills.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+     
+  </section>
+
+  <!-- Courses Section -->
+  <section id="courses" class="section">
+    <div class="section-container">
+      <h2 class="section-title">Cursos Realizados</h2>
+      <div class="course-list">
+        <a href="certificate1.pdf" class="course-item" download>1. Fundamentos de JavaScript 1 - CISCO</a>
+        <a href="certificate2.pdf" class="course-item" download>2. Fundamentos de JavaScript 2 - CISCO</a>
+        <a href="certificate3.pdf" class="course-item" download>3. Fundamentos do Python 1 - CISCO</a>
+        <a href="certificate4.pdf" class="course-item" download>4. Fundamentos do Python 2 - CISCO</a>
+        <a href="certificate5.pdf" class="course-item" download>5. Fundamentos da Inteligência Artificial - SENAI</a>
+        <a href="certificate6.pdf" class="course-item" download>6. Competência Transversal - Segurança no Trabalho - SENAI</a>
+        <a href="certificate7.pdf" class="course-item" download>7. Desvendando a Blockchain - SENAI</a>
+        <a href="certificate8.pdf" class="course-item" download>8. Desvendando a Indústria 4.0 - SENAI</a>
+        <a href="certificate9.pdf" class="course-item" download>9. WEB 3.0 - SENAI</a>
+        <a href="certificate10.pdf" class="course-item" download>10. Privacidade e Proteção de Dados (LGPD) - SENAI</a>
+        <a href="certificate11.pdf" class="course-item" download>11. Economia Circular - SENAI</a>
+        <a href="certificate12.pdf" class="course-item" download>12. Excel Avançado - GINEAD</a>
+        <a href="certificate13.pdf" class="course-item" download>13. Introdução ao Pentest na Prática - DESEC</a>
+        <a href="certificate14.pdf" class="course-item" download>14. Linux Fundamentos - FIAP</a>
+        <a href="certificate15.pdf" class="course-item" download>15. Cybersecurity - FIAP</a>
+        <a href="certificate16.pdf" class="course-item" download>16. Excel na Prática - BRADESCO</a>
+       <a href="certificate16.pdf" class="course-item" download>17. Inglês - KNN</a>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- Contact Section -->
+  <section id="contact" class="section contact">
+    <div class="section-container">
+      <h2 class="section-title">Entre em Contato</h2>
+      <p>Estou sempre aberta a novas oportunidades e conversas sobre tecnologia e inovação.</p>
+      <div class="contact-info">
+        <div class="contact-item">
+          <i class="ri-mail-line"></i>
+          <span>yasminsiqueiralobo@gmail.com</span>
+        </div>
+        <div class="contact-item">
+          <i class="ri-phone-line"></i>
+          <span>(12) 99786-4262</span>
+        </div>
+        <div class="contact-item">
+          <i class="ri-github-line"></i>
+          <span>github.com/YasminLobo</span>
         </div>
       </div>
     </div>
   </section>
 
-  <section id="skills" class="section">
-    <div class="section__container">
-      <h2 class="section__title">Habilidades Técnicas</h2>
-      <div class="grid">
-        <div class="card">
-          <h3>Linguagens de Programação</h3>
-          <div>
-            <span class="pill">Python</span>
-            <span class="pill">JavaScript</span>
-            <span class="pill">HTML/CSS</span>
-          </div>
-        </div>
-        
-        <div class="card">
-          <h3>Tecnologias e Ferramentas</h3>
-          <div>
-            <span class="pill">React Native</span>
-            <span class="pill">Git</span>
-            <span class="pill">Metodologias Ágeis</span>
-          </div>
-        </div>
-        
-        <div class="card">
-          <h3>Habilidades Complementares</h3>
-          <div>
-            <span class="pill">Inglês Intermediário</span>
-            <span class="pill">Trabalho em Equipe</span>
-            <span class="pill">Resolução de Problemas</span>
-          </div>
-        </div>
-        
-        <div class="card">
-          <h3>Interesses</h3>
-          <div>
-            <span class="pill">Desenvolvimento de Software</span>
-            <span class="pill">Segurança Cibernética</span>
-            <span class="pill">Inovação Tecnológica</span>
-          </div>
-        </div>
-      </div>
+  <!-- Footer -->
+  <footer class="footer">
+  
+    <div class="social-links">
+      <a href="#"><i class="ri-linkedin-fill"></i></a>
+      <a href="#"><i class="ri-github-fill"></i></a>
+      <a href="#"><i class="ri-instagram-line"></i></a>
     </div>
-  </section>
-
-  <section id="contact" class="section">
-    <div class="section__container">
-      <h2 class="section__title">Vamos Conversar?</h2>
-      <div style="text-align: center; max-width: 600px; margin: 0 auto;">
-        <p>Estou animada com a possibilidade de contribuir com a Embraer e crescer profissionalmente nesta empresa que admiro tanto.</p>
-        <div style="margin-top: 2rem;">
-          <a href="mailto:yasmin@exemplo.com" class="btn">Enviar Email</a>
-          <a href="tel:+5511999999999" class="btn btn-outline">Ligar Agora</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <footer>
-    <div class="section__container">
-      <div class="footer__logo">Yasmin Siqueira Lobo</div>
-      <p class="footer__text">Obrigada pela oportunidade de me apresentar! Espero poder contribuir com a Embraer em breve.</p>
-      <div class="socials">
-        <a href="#"><i class="ri-linkedin-fill"></i></a>
-        <a href="#"><i class="ri-github-fill"></i></a>
-        <a href="#"><i class="ri-instagram-line"></i></a>
-        <a href="#"><i class="ri-twitter-fill"></i></a>
-      </div>
-      <p style="margin-top: 2rem;">© 2023 Yasmin Siqueira Lobo. Todos os direitos reservados.</p>
-    </div>
+   
   </footer>
-
-  <script>
-    // Smooth scrolling for navigation links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        
-        document.querySelector(this.getAttribute('href')).scrollIntoView({
-          behavior: 'smooth'
-        });
-      });
-    });
-  </script>
 </body>
 </html>
