@@ -9,13 +9,18 @@
   <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet">
   <style>
     :root {
-      --onesubsea-blue: #003087;
-      --onesubsea-dark-blue: #002050;
-      --onesubsea-light-blue: #4d7bc7;
+      --primary-color: #0066cc;
+      --primary-dark: #004d99;
+      --primary-light: #3399ff;
+      --secondary-color: #00cc99;
+      --dark-color: #1a1a2e;
+      --light-color: #f5f7fa;
       --white: #ffffff;
-      --light-gray: #f5f7fa;
-      --dark-gray: #333333;
+      --gray: #e6e6e6;
       --max-width: 1200px;
+      --border-radius: 12px;
+      --box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+      --transition: all 0.3s ease;
     }
 
     * {
@@ -27,24 +32,41 @@
     body {
       font-family: 'Poppins', sans-serif;
       background-color: var(--white);
-      color: var(--dark-gray);
-      line-height: 1.6;
+      color: var(--dark-color);
+      line-height: 1.7;
       overflow-x: hidden;
+      scroll-behavior: smooth;
+    }
+
+    /* Scrollbar */
+    ::-webkit-scrollbar {
+      width: 10px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: var(--light-color);
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: var(--primary-color);
+      border-radius: 5px;
     }
 
     /* Header */
     .header {
-      background-color: var(--white);
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      background-color: rgba(255, 255, 255, 0.95);
+      box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
       position: fixed;
       width: 100%;
-      z-index: 100;
+      z-index: 1000;
+      backdrop-filter: blur(10px);
+      transition: var(--transition);
     }
 
     .header-container {
       max-width: var(--max-width);
       margin: 0 auto;
-      padding: 1rem 2rem;
+      padding: 1.2rem 2rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -53,21 +75,29 @@
     .logo {
       font-size: 1.8rem;
       font-weight: 700;
-      color: var(--onesubsea-blue);
+      color: var(--primary-color);
       text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .logo i {
+      font-size: 1.5rem;
     }
 
     .nav-links {
       display: flex;
-      gap: 2rem;
+      gap: 2.5rem;
     }
 
     .nav-links a {
-      color: var(--onesubsea-blue);
+      color: var(--dark-color);
       font-weight: 500;
       text-decoration: none;
       position: relative;
       padding: 0.5rem 0;
+      transition: var(--transition);
     }
 
     .nav-links a::after {
@@ -77,57 +107,98 @@
       left: 0;
       width: 0;
       height: 2px;
-      background-color: var(--onesubsea-blue);
-      transition: width 0.3s;
+      background-color: var(--primary-color);
+      transition: var(--transition);
     }
 
     .nav-links a:hover::after {
       width: 100%;
     }
 
+    .nav-links a:hover {
+      color: var(--primary-color);
+    }
+
+    .mobile-menu-btn {
+      display: none;
+      background: none;
+      border: none;
+      font-size: 1.8rem;
+      color: var(--primary-color);
+      cursor: pointer;
+    }
+
     /* Hero Section */
     .hero {
-      background: linear-gradient(rgba(0, 48, 135, 0.8), rgba(0, 48, 135, 0.8)),
+      background: linear-gradient(135deg, rgba(0, 102, 204, 0.9) 0%, rgba(0, 204, 153, 0.8) 100%),
         url('https://images.unsplash.com/photo-1518773553398-650c184e0bb3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80');
       background-size: cover;
       background-position: center;
+      background-attachment: fixed;
       color: var(--white);
-      padding: 10rem 2rem;
+      padding: 12rem 2rem 8rem;
       text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      bottom: -50px;
+      left: 0;
+      right: 0;
+      height: 100px;
+      background: var(--white);
+      transform: skewY(-3deg);
+      z-index: 1;
     }
 
     .hero-content {
       max-width: var(--max-width);
       margin: 0 auto;
+      position: relative;
+      z-index: 2;
     }
 
     .hero h1 {
       font-size: 3.5rem;
       margin-bottom: 1.5rem;
       font-weight: 700;
+      line-height: 1.2;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     }
 
     .hero p {
-      font-size: 1.2rem;
-      max-width: 800px;
-      margin: 0 auto 2rem;
+      font-size: 1.3rem;
+      max-width: 700px;
+      margin: 0 auto 3rem;
+      opacity: 0.9;
+    }
+
+    .hero-btns {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      margin-top: 2rem;
     }
 
     .btn {
       display: inline-block;
       background-color: var(--white);
-      color: var(--onesubsea-blue);
-      padding: 0.8rem 2rem;
-      border-radius: 30px;
+      color: var(--primary-color);
+      padding: 0.9rem 2.2rem;
+      border-radius: 50px;
       text-decoration: none;
       font-weight: 600;
-      transition: all 0.3s;
-      margin: 0 0.5rem;
+      transition: var(--transition);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      border: 2px solid transparent;
     }
 
     .btn:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
     }
 
     .btn-outline {
@@ -140,9 +211,45 @@
       background-color: rgba(255, 255, 255, 0.1);
     }
 
+    .btn-primary {
+      background-color: var(--primary-color);
+      color: var(--white);
+    }
+
+    .btn-primary:hover {
+      background-color: var(--primary-dark);
+    }
+
+    /* Floating elements */
+    .floating-elements {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      z-index: 1;
+    }
+
+    .floating-element {
+      position: absolute;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 50%;
+      animation: float 15s infinite linear;
+    }
+
+    @keyframes float {
+      0% {
+        transform: translateY(0) rotate(0deg);
+      }
+      100% {
+        transform: translateY(-1000px) rotate(720deg);
+      }
+    }
+
     /* About Section */
     .section {
-      padding: 5rem 2rem;
+      padding: 6rem 2rem;
       position: relative;
     }
 
@@ -153,7 +260,7 @@
 
     .section-title {
       font-size: 2.5rem;
-      color: var(--onesubsea-blue);
+      color: var(--primary-color);
       margin-bottom: 3rem;
       text-align: center;
       position: relative;
@@ -164,8 +271,9 @@
       display: block;
       width: 80px;
       height: 4px;
-      background-color: var(--onesubsea-light-blue);
-      margin: 1rem auto 0;
+      background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+      margin: 1.5rem auto 0;
+      border-radius: 2px;
     }
 
     .grid {
@@ -177,16 +285,16 @@
     .about-content {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 3rem;
+      gap: 4rem;
       align-items: center;
     }
 
     .about-image {
-      border-radius: 15px;
+      border-radius: var(--border-radius);
       overflow: hidden;
-      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
-      height: 300px;
-      background-color: #e0e0e0;
+      box-shadow: var(--box-shadow);
+      height: 400px;
+      position: relative;
     }
 
     .about-image img {
@@ -194,94 +302,178 @@
       height: 100%;
       object-fit: cover;
       display: block;
+      transition: var(--transition);
+    }
+
+    .about-image:hover img {
+      transform: scale(1.05);
+    }
+
+    .about-image::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(to bottom right, rgba(0, 102, 204, 0.2), rgba(0, 204, 153, 0.2));
+      z-index: 1;
+    }
+
+    .about-text {
+      padding: 1rem 0;
+    }
+
+    .about-text h3 {
+      font-size: 1.5rem;
+      color: var(--primary-color);
+      margin-bottom: 1.5rem;
     }
 
     .about-text p {
       margin-bottom: 1.5rem;
+      color: #555;
     }
 
-    /* Airplane Container */
-    .airplane-container {
-      position: absolute;
-      top: -80px;
-      /* Ajustado para ficar mais acima */
-      left: 0;
-      right: 0;
-      height: 50px;
+    .highlight {
+      color: var(--primary-color);
+      font-weight: 600;
     }
 
-    /* Airplane Animation */
-    .airplane {
+    /* Timeline */
+    .timeline {
+      position: relative;
+      max-width: 800px;
+      margin: 3rem auto;
+    }
+
+    .timeline::before {
+      content: '';
       position: absolute;
+      width: 4px;
+      background-color: var(--primary-light);
       top: 0;
-      left: -50px;
-      width: 50px;
-      height: 50px;
-      background: url('https://img.icons8.com/color/50/003087/submarine.png') no-repeat center;
-      background-size: contain;
-      animation: fly 10s linear forwards;
+      bottom: 0;
+      left: 50%;
+      margin-left: -2px;
+      border-radius: 2px;
+    }
+
+    .timeline-item {
+      padding: 10px 40px;
+      position: relative;
+      width: 50%;
+      box-sizing: border-box;
+    }
+
+    .timeline-item::after {
+      content: '';
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background-color: var(--white);
+      border: 4px solid var(--primary-color);
+      top: 15px;
+      border-radius: 50%;
       z-index: 1;
     }
 
-    .airplane:hover {
-      animation-play-state: paused;
-      transform: scale(1.2);
+    .left {
+      left: 0;
+      text-align: right;
     }
 
-    @keyframes fly {
-      0% {
-        left: -50px;
-      }
-
-      100% {
-        left: calc(100% + 50px);
-      }
+    .right {
+      left: 50%;
+      text-align: left;
     }
 
-    /* Values Section */
-    .values {
-      background-color: var(--light-gray);
+    .left::after {
+      right: -12px;
     }
 
-    .value-card {
+    .right::after {
+      left: -12px;
+    }
+
+    .timeline-content {
+      padding: 20px;
       background-color: var(--white);
-      padding: 2rem;
-      border-radius: 10px;
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+      border-radius: var(--border-radius);
+      box-shadow: var(--box-shadow);
+      transition: var(--transition);
+    }
+
+    .timeline-content:hover {
+      transform: translateY(-5px);
+    }
+
+    .timeline-content h3 {
+      color: var(--primary-color);
+      margin-bottom: 0.5rem;
+    }
+
+    .timeline-content p {
+      color: #666;
+    }
+
+    /* Cards */
+    .card {
+      background-color: var(--white);
+      padding: 2.5rem;
+      border-radius: var(--border-radius);
+      box-shadow: var(--box-shadow);
       text-align: center;
-      transition: transform 0.3s;
-    }
-
-    .value-card:hover {
-      transform: translateY(-10px);
-    }
-
-    .value-icon {
-      font-size: 3rem;
-      color: var(--onesubsea-light-blue);
-      margin-bottom: 1.5rem;
-    }
-
-    .value-card h3 {
-      color: var(--onesubsea-blue);
-      margin-bottom: 1rem;
-    }
-
-    /* Projects Section */
-    .project-card {
-      position: relative;
-      border-radius: 10px;
-      overflow: hidden;
-      height: 300px;
-    }
-
-    .project-card .placeholder {
+      transition: var(--transition);
       height: 100%;
-      background-color: #e0e0e0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+    }
+
+    .card-icon {
+      width: 70px;
+      height: 70px;
+      background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+      border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
+      margin-bottom: 1.5rem;
+      color: var(--white);
+      font-size: 1.8rem;
+      box-shadow: 0 5px 15px rgba(0, 102, 204, 0.3);
+    }
+
+    .card h3 {
+      color: var(--primary-color);
+      margin-bottom: 1rem;
+      font-size: 1.3rem;
+    }
+
+    .card p {
       color: #666;
+    }
+
+    /* Projects Section */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+      gap: 2rem;
+    }
+
+    .project-card {
+      position: relative;
+      border-radius: var(--border-radius);
+      overflow: hidden;
+      height: 350px;
+      box-shadow: var(--box-shadow);
     }
 
     .project-card img {
@@ -295,75 +487,160 @@
       transform: scale(1.1);
     }
 
-    .project-info {
+    .project-overlay {
       position: absolute;
       bottom: 0;
       left: 0;
       right: 0;
-      background: rgba(0, 48, 135, 0.9);
+      background: linear-gradient(to top, rgba(0, 0, 0, 0.9), transparent);
+      padding: 2rem;
       color: var(--white);
-      padding: 1.5rem;
       transform: translateY(100%);
-      transition: transform 0.3s;
+      transition: var(--transition);
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
     }
 
-    .project-card:hover .project-info {
+    .project-card:hover .project-overlay {
       transform: translateY(0);
     }
 
-    /* Certifications Section */
-    .certification-card {
-      background-color: var(--white);
-      padding: 2rem;
-      border-radius: 10px;
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-      text-align: center;
-      transition: transform 0.3s;
-      height: 200px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-    }
-
-    .certification-card:hover {
-      transform: translateY(-10px);
-    }
-
-    .certification-card h3 {
-      color: var(--onesubsea-blue);
+    .project-tag {
+      display: inline-block;
+      background-color: var(--primary-color);
+      color: var(--white);
+      padding: 0.3rem 0.8rem;
+      border-radius: 50px;
+      font-size: 0.8rem;
       margin-bottom: 1rem;
+    }
+
+    .project-title {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    /* Skills Section */
+    .skills-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+
+    .skill-item {
+      background-color: var(--white);
+      padding: 1.5rem;
+      border-radius: var(--border-radius);
+      box-shadow: var(--box-shadow);
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      transition: var(--transition);
+      width: calc(50% - 1.5rem);
+      max-width: 300px;
+    }
+
+    .skill-item:hover {
+      transform: translateY(-5px);
+    }
+
+    .skill-icon {
+      width: 50px;
+      height: 50px;
+      background-color: var(--light-color);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--primary-color);
+      font-size: 1.5rem;
+    }
+
+    .skill-info h3 {
+      color: var(--primary-color);
+      margin-bottom: 0.3rem;
+    }
+
+    .skill-info p {
+      color: #666;
+      font-size: 0.9rem;
     }
 
     /* Courses Section */
     .course-list {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 1rem;
-      margin-top: 2rem;
+      gap: 1.5rem;
+      margin-top: 3rem;
     }
 
     .course-item {
-      display: block;
-      padding: 0.5rem 1rem;
-      background-color: var(--light-gray);
-      border-left: 4px solid var(--onesubsea-blue);
-      border-radius: 5px;
-      font-weight: 500;
+      display: flex;
+      align-items: center;
+      padding: 1.2rem 1.5rem;
+      background-color: var(--white);
+      border-left: 4px solid var(--primary-color);
+      border-radius: var(--border-radius);
+      box-shadow: var(--box-shadow);
       text-decoration: none;
-      color: var(--dark-gray);
-      transition: background-color 0.3s;
+      color: var(--dark-color);
+      transition: var(--transition);
     }
 
     .course-item:hover {
-      background-color: var(--onesubsea-light-blue);
+      transform: translateY(-5px);
+      background-color: var(--primary-color);
       color: var(--white);
+    }
+
+    .course-icon {
+      margin-right: 1.2rem;
+      font-size: 1.5rem;
+      color: var(--primary-color);
+    }
+
+    .course-item:hover .course-icon {
+      color: var(--white);
+    }
+
+    .course-info h3 {
+      font-size: 1rem;
+      margin-bottom: 0.3rem;
+    }
+
+    .course-info p {
+      font-size: 0.8rem;
+      opacity: 0.8;
     }
 
     /* Contact Section */
     .contact {
-      background-color: var(--onesubsea-blue);
+      background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
       color: var(--white);
       text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .contact::before {
+      content: '';
+      position: absolute;
+      top: -50px;
+      left: 0;
+      right: 0;
+      height: 100px;
+      background: var(--white);
+      transform: skewY(3deg);
+      z-index: 1;
+    }
+
+    .contact .section-container {
+      position: relative;
+      z-index: 2;
     }
 
     .contact .section-title {
@@ -377,62 +654,209 @@
     .contact-info {
       display: flex;
       justify-content: center;
-      gap: 2rem;
-      margin-top: 2rem;
+      gap: 3rem;
+      margin-top: 3rem;
+      flex-wrap: wrap;
     }
 
     .contact-item {
       display: flex;
       align-items: center;
-      gap: 0.8rem;
+      gap: 1rem;
+      background-color: rgba(255, 255, 255, 0.1);
+      padding: 1.5rem;
+      border-radius: var(--border-radius);
+      transition: var(--transition);
+    }
+
+    .contact-item:hover {
+      background-color: rgba(255, 255, 255, 0.2);
+      transform: translateY(-5px);
+    }
+
+    .contact-icon {
+      font-size: 1.8rem;
     }
 
     /* Footer */
     .footer {
-      background-color: var(--onesubsea-dark-blue);
+      background-color: var(--dark-color);
       color: var(--white);
-      padding: 2rem;
+      padding: 3rem 2rem;
       text-align: center;
+    }
+
+    .footer-content {
+      max-width: var(--max-width);
+      margin: 0 auto;
     }
 
     .social-links {
       display: flex;
       justify-content: center;
       gap: 1.5rem;
-      margin: 1.5rem 0;
+      margin: 2rem 0;
     }
 
     .social-links a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 50px;
+      height: 50px;
+      background-color: rgba(255, 255, 255, 0.1);
       color: var(--white);
       font-size: 1.5rem;
-      transition: transform 0.3s;
+      border-radius: 50%;
+      transition: var(--transition);
     }
 
     .social-links a:hover {
+      background-color: var(--primary-color);
       transform: translateY(-5px);
     }
 
+    .copyright {
+      margin-top: 2rem;
+      opacity: 0.8;
+      font-size: 0.9rem;
+    }
+
+    /* Back to top button */
+    .back-to-top {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      width: 50px;
+      height: 50px;
+      background-color: var(--primary-color);
+      color: var(--white);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+      cursor: pointer;
+      opacity: 0;
+      visibility: hidden;
+      transition: var(--transition);
+      z-index: 999;
+    }
+
+    .back-to-top.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .back-to-top:hover {
+      background-color: var(--primary-dark);
+      transform: translateY(-5px);
+    }
+
+    /* Responsive styles */
+    @media (max-width: 992px) {
+      .about-content {
+        grid-template-columns: 1fr;
+      }
+
+      .about-image {
+        order: -1;
+        max-width: 500px;
+        margin: 0 auto;
+      }
+
+      .timeline::before {
+        left: 31px;
+      }
+
+      .timeline-item {
+        width: 100%;
+        padding-left: 70px;
+        padding-right: 25px;
+      }
+
+      .timeline-item::after {
+        left: 21px;
+      }
+
+      .left, .right {
+        left: 0;
+        text-align: left;
+      }
+    }
+
     @media (max-width: 768px) {
-      .header-container {
-        flex-direction: column;
-        padding: 1rem;
-      }
-
       .nav-links {
-        margin-top: 1rem;
-        gap: 1rem;
+        position: fixed;
+        top: 80px;
+        left: -100%;
+        width: 100%;
+        height: calc(100vh - 80px);
+        background-color: var(--white);
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 2rem;
+        transition: var(--transition);
+        z-index: 999;
       }
 
-      .hero {
-        padding: 8rem 1rem;
+      .nav-links.active {
+        left: 0;
+      }
+
+      .mobile-menu-btn {
+        display: block;
       }
 
       .hero h1 {
-        font-size: 2.5rem;
+        font-size: 2.8rem;
       }
 
-      .about-content {
+      .hero p {
+        font-size: 1.1rem;
+      }
+
+      .hero-btns {
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      .btn {
+        width: 100%;
+        max-width: 250px;
+        margin: 0 auto;
+      }
+
+      .projects-grid {
         grid-template-columns: 1fr;
+      }
+
+      .skill-item {
+        width: 100%;
+      }
+    }
+
+    @media (max-width: 576px) {
+      .header-container {
+        padding: 1rem;
+      }
+
+      .hero {
+        padding: 10rem 1rem 6rem;
+      }
+
+      .hero h1 {
+        font-size: 2.2rem;
+      }
+
+      .section {
+        padding: 4rem 1rem;
+      }
+
+      .section-title {
+        font-size: 2rem;
       }
 
       .contact-info {
@@ -440,111 +864,250 @@
         gap: 1rem;
       }
 
-      .course-list {
-        grid-template-columns: 1fr;
+      .contact-item {
+        width: 100%;
+        justify-content: center;
       }
     }
   </style>
 </head>
 
 <body>
+  <!-- Header -->
+  <header class="header">
+    <div class="header-container">
+      <a href="#" class="logo">
+        <i class="ri-code-s-slash-line"></i> Yasmin Lobo
+      </a>
+      <nav class="nav-links">
+        <a href="#about">Sobre</a>
+        <a href="#education">Formação</a>
+        <a href="#onesubsea">OneSubsea</a>
+        <a href="#projects">Projetos</a>
+        <a href="#skills">Habilidades</a>
+        <a href="#courses">Cursos</a>
+        <a href="#contact">Contato</a>
+      </nav>
+      <button class="mobile-menu-btn">
+        <i class="ri-menu-line"></i>
+      </button>
+    </div>
+  </header>
 
   <!-- Hero Section -->
   <section class="hero">
+    <div class="floating-elements">
+      <div class="floating-element" style="width: 50px; height: 50px; top: 10%; left: 10%;"></div>
+      <div class="floating-element" style="width: 30px; height: 30px; top: 50%; left: 20%;"></div>
+      <div class="floating-element" style="width: 40px; height: 40px; top: 30%; left: 70%;"></div>
+      <div class="floating-element" style="width: 60px; height: 60px; top: 70%; left: 80%;"></div>
+    </div>
     <div class="hero-content">
       <h1>Yasmin Siqueira Lobo</h1>
       <p>Estudante de Análise e Desenvolvimento de Sistemas.</p>
-      <div style="margin-top: 2rem;">
+      <div class="hero-btns">
+        <a href="#projects" class="btn btn-outline">Ver Projetos</a>
+        <a href="#contact" class="btn btn-primary">Contato</a>
       </div>
     </div>
   </section>
 
   <!-- About Section -->
   <section id="about" class="section">
-    <div style="margin-top: 2rem;">
-      <div class="airplane-container">
-        <div class="airplane"></div>
-      </div>
-      <div class="section-container">
-        <h2 class="section-title">Sobre Mim</h2>
-        <div class="about-content">
-          <div class="about-text">
-            <p>Meu nome é Yasmin Siqueira Lobo, tenho 18 anos, moro em Caçapava SP e sou estudante de Análise e Desenvolvimento de Sistemas na Faculdade SENAI. Optei por essa área para desenvolver tecnologias que transformem ideias em inovação.</p>
-            <h3>Experiência Profissional</h3>
-            <p>Estagiária – Desenvolvimento de Software no SENAI (2025 – Presente)</p>
-            <h3>Valores:</h3>
-            <p>Excelência, integridade, empatia, fé e ética.</p>
-           
-          </div>
-          <div class="about-image">
-            <img src="Yasmin.jpeg" alt="Yasmin Siqueira Lobo">
-          </div>
-        </div>
-      </div>
-  </section>
-
-  <!-- Formação Acadêmica -->
-  <section id="formacao" class="section">
     <div class="section-container">
-      <h2 class="section-title">Formação Acadêmica</h2>
-      <div class="grid">
-        <div class="value-card">
-          <div class="value-icon">
-            <i class="ri-code-s-slash-line"></i>
-          </div>
-          <h3>Técnico em Desenvolvimento de Sistemas</h3>
-          <p>SENAI (2023 – 2024)</p>
+      <h2 class="section-title">Sobre Mim</h2>
+      <div class="about-content">
+        <div class="about-text">
+          <p>Meu nome é <span class="highlight">Yasmin Siqueira Lobo</span>, tenho 18 anos e moro em Caçapava-SP. Sou apaixonada por tecnologia e estou cursando Análise e Desenvolvimento de Sistemas na Faculdade SENAI.</p>
+          <p>Escolhi essa área porque acredito no poder da tecnologia para transformar ideias em inovação e melhorar a vida das pessoas. Meu objetivo é me tornar uma desenvolvedora full-stack com especialização em análise de dados.</p>
+          
+          <h3>Experiência Profissional</h3>
+          <p><strong>Estagiária em Desenvolvimento de Software</strong> - SENAI (2025 – Presente)</p>
+          <p>Desenvolvimento de dashboards e aplicações web para automação de processos internos.</p>
+          
+          <h3>Valores Pessoais</h3>
+          <p>Excelência, integridade, empatia, fé e ética são os pilares que guiam minha vida pessoal e profissional.</p>
         </div>
-        <div class="value-card">
-          <div class="value-icon">
-            <i class="ri-computer-line"></i>
-          </div>
-          <h3>Tecnólogo em Análise e Desenvolvimento de Sistemas</h3>
-          <p>SENAI (2025 – 2027)</p>
+        <div class="about-image">
+          <img src="Yasmin.jpeg" alt="Yasmin Siqueira Lobo">
         </div>
       </div>
     </div>
   </section>
 
+  <!-- Education Section -->
+  <section id="education" class="section">
+    <div class="section-container">
+      <h2 class="section-title">Formação Acadêmica</h2>
+      <div class="timeline">
+        <div class="timeline-item left">
+          <div class="timeline-content">
+            <h3>Técnico em Desenvolvimento de Sistemas</h3>
+            <p>SENAI (2023 – 2024)</p>
+          </div>
+        </div>
+        <div class="timeline-item right">
+          <div class="timeline-content">
+            <h3>Superior em Análise e Desenvolvimento de Sistemas</h3>
+            <p>SENAI (2025 – 2027)</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Hire Me Section -->
+<section id="why-hire-me" class="section" style="background-color: #f8faff;">
+  <div class="section-container">
+    <h2 class="section-title">Por que me contratar?</h2>
+    
+    <div class="testimonial-card" style="background: white; padding: 2.5rem; border-radius: 12px; max-width: 800px; margin: 0 auto; box-shadow: 0 10px 30px rgba(0, 102, 204, 0.1); position: relative;">
+      <div style="display: flex; align-items: center; margin-bottom: 1.5rem;">
+        <div class="about-image" style="width: 80px; height: 80px; border-radius: 50%; overflow: hidden; margin-right: 1.5rem;">
+          <img src="Yasmin.jpeg" alt="Yasmin" style="width: 100%; height: 100%; object-fit: cover;">
+        </div>
+        <div>
+          <h3 style="color: var(--primary-color); margin-bottom: 0.2rem;">Yasmin Lobo</h3>
+          <p style="color: #666; font-size: 0.9rem;">Desenvolvedora e Analista de Sistemas</p>
+        </div>
+      </div>
+      
+      <div style="color: #444; line-height: 1.8; font-size: 1.1rem;">
+        <p>"Acredito que posso agregar muito à OneSubsea porque combino <strong>habilidades técnicas</strong> com <strong>soft skills essenciais</strong> como proatividade, comunicação clara e criatividade para inovação.</p>
+        
+        <p>Minhas experiências em automação de processos e desenvolvimento de dashboards comprovam minha capacidade de entregar <strong>resultados reais e práticos</strong>. Me identifico profundamente com a cultura de inovação e colaboração da OneSubsea, e estou genuinamente motivada para:</p>
+        
+        <ul style="margin: 1.5rem 0; padding-left: 1.2rem;">
+          <li style="margin-bottom: 0.8rem;">Aprender com equipes de alta performance</li>
+          <li style="margin-bottom: 0.8rem;">Contribuir com soluções inteligentes</li>
+          <li style="margin-bottom: 0.8rem;">Crescer junto com os projetos da empresa</li>
+        </ul>
+        
+        <p>Estou pronta para trazer minha energia, foco técnico e visão inovadora para fazer a diferença nos desafios da empresa."</p>
+      </div>
+      
+      <div style="text-align: center; margin-top: 2.5rem;">
+        <a href="#contact" class="btn" style="background: var(--primary-color); color: white; font-weight: 600; padding: 0.8rem 2.5rem; display: inline-flex; align-items: center;">
+          <i class="ri-send-plane-line" style="margin-right: 8px;"></i> Quero fazer parte do time
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+  <!-- Why OneSubsea Section -->
+  <section id="onesubsea" class="section">
+    <div class="section-container">
+      <h2 class="section-title">Por que a OneSubsea?</h2>
+      <div class="about-content">
+        <div class="about-text">
+          
+          <h3>Por que me identifico com a OneSubsea?</h3>
+          <p><strong>Inovação Tecnológica:</strong> A OneSubsea é reconhecida por desenvolver tecnologias de ponta, como sistemas de bombeio submarino e soluções digitais para monitoramento em tempo real. Como estudante de tecnologia, admiro essa dedicação à inovação e quero contribuir com meu conhecimento em desenvolvimento de software e análise de dados.</p>
+          <p><strong>Sustentabilidade:</strong> A empresa está comprometida em reduzir o impacto ambiental, promovendo soluções que aumentam a eficiência energética. Esse alinhamento com a sustentabilidade ressoa com meus valores pessoais de responsabilidade e impacto positivo.</p>
+          <p><strong>Crescimento Profissional:</strong> A OneSubsea oferece um ambiente dinâmico que valoriza o aprendizado contínuo e o desenvolvimento de talentos. Busco um local onde possa crescer como profissional, aplicando minhas habilidades em projetos reais que impactam a indústria.</p>
+          
+        </div>
+        <div class="about-image">
+          <img src="data:image/jpeg;base64,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" alt="OneSubsea Technology">
+        </div>
+      </div>
+      <div class="grid">
+        <div class="card">
+          <div class="card-icon">
+            <i class="ri-rocket-line"></i>
+          </div>
+          <h3>Inovação</h3>
+          <p>Admiro a OneSubsea por ser líder em soluções submarinas, com foco contínuo em inovação tecnológica e sustentabilidade.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">
+            <i class="ri-team-line"></i>
+          </div>
+          <h3>Crescimento</h3>
+          <p>Busco um ambiente desafiador que promova meu desenvolvimento profissional e aprendizado contínuo.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">
+            <i class="ri-lightbulb-line"></i>
+          </div>
+          <h3>Contribuição</h3>
+          <p>Quero aplicar meus conhecimentos em desenvolvimento e análise de dados para criar soluções que otimizem processos.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <!-- Projects Section -->
   <section id="projects" class="section">
     <div class="section-container">
       <h2 class="section-title">Projetos e Experiências</h2>
-      <div class="grid">
+      <div class="projects-grid">
         <div class="project-card">
-          <img src="obr-2022-2023.png" alt="OBR 2022-2023" class="project-image" />
-          <div class="project-info">
-            <h3>OBR - Olimpíada Brasileira de Robótica 2022-2023</h3>
-            <p>Desenvolvi um robô autônomo com Arduino.</p>
+          <img src="obr-2022-2023.png" alt="OBR 2022-2023">
+          <div class="project-overlay">
+            <span class="project-tag">Robótica</span>
+            <h3 class="project-title">OBR - Olimpíada Brasileira de Robótica</h3>
+            <p>Desenvolvi um robô autônomo com Arduino capaz de andar em locais e superar obstáculos.</p>
           </div>
         </div>
         <div class="project-card">
-          <img src="tech-circular-2025.png" alt="Projeto Tech Circular 2025" class="project-image" />
-          <div class="project-info">
-            <h3>Projeto Tech Circular 2025</h3>
-            <p>Participação em projeto focado em tecnologia circular, promovendo inovação sustentável.</p>
+          <img src="tech-circular-2025.png" alt="Projeto Tech Circular 2025">
+          <div class="project-overlay">
+            <span class="project-tag">Mobile</span>
+            <h3 class="project-title">Tech Circular 2025</h3>
+            <p>Aplicativo para gestão de resíduos desenvolvido com React Native, integrando geolocalização.</p>
           </div>
         </div>
         <div class="project-card">
-          <img src="sp-skills-2025.png" alt="SP Skills 2025" class="project-image" />
-          <div class="project-info">
-            <h3>SP Skills 2025 - Workshop Cybersecurity</h3>
-            <p>Aprendi técnicas de pentest e simulei ataques em rede durante o workshop.</p>
+          <img src="sp-skills-2025.png" alt="SP Skills 2025">
+          <div class="project-overlay">
+            <span class="project-tag">Segurança</span>
+            <h3 class="project-title">SP Skills 2025</h3>
+            <p>Workshop de Cybersecurity onde apresentei técnicas de pentest e simulação de ataques em redes seguras.</p>
           </div>
         </div>
         <div class="project-card">
-          <img src="grafic.png" alt="Estágio SENAI 2025" class="project-image" />
-          <div class="project-info">
-            <h3>Dashboard de monitoramento</h3>
-              <p>Desenvolvi um dashboard de monitoramento de natalidade nas cidades no Google Colab, uma plataforma gratuita baseada na nuvem para executar Python. Utilizei Pandas para analisar dados de natalidade por cidade, Matplotlib e Seaborn para criar visualizações de métricas como taxas de nascimento</p>
+          <img src="grafic.png" alt="Dashboard de Natalidade">
+          <div class="project-overlay">
+            <span class="project-tag">Análise de Dados</span>
+            <h3 class="project-title">Dashboard de Natalidade</h3>
+            <p>Análise de dados demográficos usando Python, Pandas e visualização com Matplotlib/Seaborn.</p>
           </div>
         </div>
         <div class="project-card">
-          <img src="dashboard.png" alt="Dashboard de Produção 2025" class="project-image" />
-          <div class="project-info">
-            <h3>Dashboard de Produção 2025</h3>
-            <p>Desenvolvi um Dashboard com PHP, JavaScript e MySQL, incluindo alertas e relatórios IoT.</p>
+          <img src="dashboard.png" alt="Dashboard de Produção">
+          <div class="project-overlay">
+            <span class="project-tag">Web Development</span>
+            <h3 class="project-title">Dashboard de Produção</h3>
+            <p>Sistema web com PHP, JavaScript e MySQL para monitoramento de KPIs com alertas em tempo real.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills Section -->
+  <section id="skills" class="section">
+    <div class="section-container">
+      <h2 class="section-title">Competências e Habilidades</h2>
+      <div class="skills-container">
+        <div class="skill-item">
+          <div class="skill-icon">
+            <i class="ri-code-line"></i>
+          </div>
+          <div class="skill-info">
+            <h3>Hard Skills</h3>
+            <p>PHP, JavaScript, React Native, SQL, Python, Power BI, Excel, Metodologias Ágeis</p>
+          </div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-icon">
+            <i class="ri-user-voice-line"></i>
+          </div>
+          <div class="skill-info">
+            <h3>Soft Skills</h3>
+            <p>Proatividade, comunicação, trabalho em equipe, criatividade, resolução de problemas</p>
           </div>
         </div>
       </div>
@@ -556,55 +1119,168 @@
     <div class="section-container">
       <h2 class="section-title">Cursos Realizados</h2>
       <div class="course-list">
-        <a href="certificate1.pdf" class="course-item" download>1. Fundamentos de JavaScript 1 - CISCO</a>
-        <a href="certificate2.pdf" class="course-item" download>2. Fundamentos de JavaScript 2 - CISCO</a>
-        <a href="certificate3.pdf" class="course-item" download>3. Fundamentos do Python 1 - CISCO</a>
-        <a href="certificate4.pdf" class="course-item" download>4. Fundamentos do Python 2 - CISCO</a>
-        <a href="certificate5.pdf" class="course-item" download>5. Fundamentos da Inteligência Artificial - SENAI</a>
-        <a href="certificate6.pdf" class="course-item" download>6. Competência Transversal - Segurança no Trabalho - SENAI</a>
-        <a href="certificate7.pdf" class="course-item" download>7. Desvendando a Blockchain - SENAI</a>
-        <a href="certificate8.pdf" class="course-item" download>8. Desvendando a Indústria 4.0 - SENAI</a>
-        <a href="certificate9.pdf" class="course-item" download>9. WEB 3.0 - SENAI</a>
-        <a href="certificate10.pdf" class="course-item" download>10. Privacidade e Proteção de Dados (LGPD) - SENAI</a>
-        <a href="certificate11.pdf" class="course-item" download>11. Economia Circular - SENAI</a>
-        <a href="certificate12.pdf" class="course-item" download>12. Excel Avançado - GINEAD</a>
-        <a href="certificate13.pdf" class="course-item" download>13. Introdução ao Pentest na Prática - DESEC</a>
-        <a href="certificate14.pdf" class="course-item" download>14. Linux Fundamentos - FIAP</a>
-        <a href="certificate15.pdf" class="course-item" download>15. Cybersecurity - FIAP</a>
-        <a href="certificate16.pdf" class="course-item" download>16. Excel na Prática - BRADESCO</a>
-        <a href="certificate16.pdf" class="course-item" download>17. Inglês - KNN</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- Competências e habilidades -->
-  <section id="competencias" class="section">
-    <div class="section-container">
-      <h2 class="section-title">Competências e Habilidades</h2>
-      <div class="about-content" style="align-items: flex-start;">
-        <div style="flex: 2;">
-          <ul style="text-align:left; margin:200px; max-width:700px; margin-top:-20px; margin-bottom: 2rem;">
-            <h3>Hard Skills</h3>
-            <ul>
-              <li>Lógica de programação</li>
-              <li>Banco de dados (SQL)</li>
-              <li>Cibersegurança</li>
-              <li>Excel e Pacote Office Avançado (Office 365)</li>
-              <li>Desenvolvimento Web/Mobile</li>
-              <li>Metodologias ágeis</li>
-              <li>Power BI / Power Apps</li>
-            </ul>
-            <br>
-            <h3>Soft Skills</h3>
-            <ul>
-              <li>Proatividade, disponibilidade, facilidade em comunicação, adaptabilidade</li>
-              <li>Team work e criatividade</li>
-            </ul>
-          </ul>
-        </div>
-        <div class="about-image2" style="flex: 1; height: 300px; width: 300px; margin: 30px; margin-top: 10px; border-radius: 15px; overflow: hidden; box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);">
-          <img src="yasmin.jpg" alt="Competências e habilidades" style="width: 100%; height: 100%; object-fit: cover; display: block;">
-        </div>
+        <a href="certificate1.pdf" class="course-item" download>
+          <div class="course-icon">
+            <i class="ri-javascript-line"></i>
+          </div>
+          <div class="course-info">
+            <h3>Fundamentos de JavaScript 1</h3>
+            <p>CISCO</p>
+          </div>
+        </a>
+        <a href="certificate2.pdf" class="course-item" download>
+          <div class="course-icon">
+            <i class="ri-javascript-line"></i>
+          </div>
+          <div class="course-info">
+            <h3>Fundamentos de JavaScript 2</h3>
+            <p>CISCO</p>
+          </div>
+        </a>
+        <a href="certificate3.pdf" class="course-item" download>
+          <div class="course-icon">
+            <i class="ri-python-line"></i>
+          </div>
+          <div class="course-info">
+            <h3>Fundamentos do Python 1</h3>
+            <p>CISCO</p>
+          </div>
+        </a>
+        <a href="certificate4.pdf" class="course-item" download>
+          <div class="course-icon">
+            <i class="ri-python-line"></i>
+          </div>
+          <div class="course-info">
+            <h3>Fundamentos do Python 2</h3>
+            <p>CISCO</p>
+          </div>
+        </a>
+        <a href="certificate5.pdf" class="course-item" download>
+          <div class="course-icon">
+            <i class="ri-brain-line"></i>
+          </div>
+          <div class="course-info">
+            <h3>Fundamentos da Inteligência Artificial</h3>
+            <p>SENAI</p>
+          </div>
+        </a>
+        <a href="certificate6.pdf" class="course-item" download>
+          <div class="course-icon">
+            <i class="ri-shield-check-line"></i>
+          </div>
+          <div class="course-info">
+            <h3>Segurança no Trabalho</h3>
+            <p>SENAI</p>
+          </div>
+        </a>
+        <a href="certificate7.pdf" class="course-item" download>
+          <div class="course-icon">
+            <i class="ri-link-m"></i>
+          </div>
+          <div class="course-info">
+            <h3>Desvendando a Blockchain</h3>
+            <p>SENAI</p>
+          </div>
+        </a>
+        <a href="certificate8.pdf" class="course-item" download>
+          <div class="course-icon">
+            <i class="ri-industry-line"></i>
+          </div>
+          <div class="course-info">
+            <h3>Desvendando a Indústria 4.0</h3>
+            <p>SENAI</p>
+          </div>
+        </a>
+        <a href="certificate9.pdf" class="course-item" download>
+          <div class="course-icon">
+            <i class="ri-global-line"></i>
+          </div>
+          <div class="course-info">
+            <h3>WEB 3.0</h3>
+            <p>SENAI</p>
+          </div>
+        </a>
+        <a href="certificate10.pdf" class="course-item" download>
+          <div class="course-icon">
+            <i class="ri-shield-keyhole-line"></i>
+          </div>
+          <div class="course-info">
+            <h3>Privacidade e Proteção de Dados (LGPD)</h3>
+            <p>SENAI</p>
+          </div>
+        </a>
+        <a href="certificate11.pdf" class="course-item" download>
+          <div class="course-icon">
+            <i class="ri-recycle-line"></i>
+          </div>
+          <div class="course-info">
+            <h3>Economia Circular</h3>
+            <p>SENAI</p>
+          </div>
+        </a>
+        <a href="certificate12.pdf" class="course-item" download>
+          <div class="course-icon">
+            <i class="ri-table-2"></i>
+          </div>
+          <div class="course-info">
+            <h3>Excel Avançado</h3>
+            <p>GINEAD</p>
+          </div>
+        </a>
+        <a href="certificate13.pdf" class="course-item" download>
+          <div class="course-icon">
+            <i class="ri-shield-line"></i>
+          </div>
+          <div class="course-info">
+            <h3>Introdução ao Pentest na Prática</h3>
+            <p>DESEC</p>
+          </div>
+        </a>
+        <a href="certificate14.pdf" class="course-item" download>
+          <div class="course-icon">
+            <i class="ri-terminal-box-line"></i>
+          </div>
+          <div class="course-info">
+            <h3>Linux Fundamentos</h3>
+            <p>FIAP</p>
+          </div>
+        </a>
+        <a href="certificate15.pdf" class="course-item" download>
+          <div class="course-icon">
+            <i class="ri-lock-password-line"></i>
+          </div>
+          <div class="course-info">
+            <h3>Cybersecurity</h3>
+            <p>FIAP</p>
+          </div>
+        </a>
+        <a href="certificate16.pdf" class="course-item" download>
+          <div class="course-icon">
+            <i class="ri-file-excel-2-line"></i>
+          </div>
+          <div class="course-info">
+            <h3>Excel na Prática</h3>
+            <p>BRADESCO</p>
+          </div>
+        </a>
+        <a href="certificate17.pdf" class="course-item" download>
+          <div class="course-icon">
+            <i class="ri-global-line"></i>
+          </div>
+          <div class="course-info">
+            <h3>Inglês</h3>
+            <p>KNN</p>
+          </div>
+        </a>
+        <a href="certificate18.pdf" class="course-item" download>
+          <div class="course-icon">
+            <i class="ri-bar-chart-2-line"></i>
+          </div>
+          <div class="course-info">
+            <h3>Introdução à Análise de Dados - Power BI</h3>
+            <p>BRADESCO</p>
+          </div>
+        </a>
       </div>
     </div>
   </section>
@@ -616,15 +1292,15 @@
       <p>Estou sempre aberta a novas oportunidades e conversas sobre tecnologia e inovação.</p>
       <div class="contact-info">
         <div class="contact-item">
-          <i class="ri-mail-line"></i>
+          <i class="ri-mail-line contact-icon"></i>
           <span>yasminsiqueiralobo@gmail.com</span>
         </div>
         <div class="contact-item">
-          <i class="ri-phone-line"></i>
+          <i class="ri-phone-line contact-icon"></i>
           <span>(12) 99786-4262</span>
         </div>
         <div class="contact-item">
-          <i class="ri-github-line"></i>
+          <i class="ri-github-line contact-icon"></i>
           <span>github.com/YasminLobo</span>
         </div>
       </div>
@@ -633,12 +1309,120 @@
 
   <!-- Footer -->
   <footer class="footer">
-    <div class="social-links">
-      <a href="#"><i class="ri-linkedin-fill"></i></a>
-      <a href="#"><i class="ri-github-fill"></i></a>
-      <a href="#"><i class="ri-instagram-line"></i></a>
+    <div class="footer-content">
+      <div class="social-links">
+        <a href="#"><i class="ri-linkedin-fill"></i></a>
+        <a href="#"><i class="ri-github-fill"></i></a>
+        <a href="#"><i class="ri-instagram-line"></i></a>
+      </div>
+      <p class="copyright">© 2024 Yasmin Siqueira Lobo. Todos os direitos reservados.</p>
     </div>
   </footer>
+
+  <!-- Back to top button -->
+  <div class="back-to-top">
+    <i class="ri-arrow-up-line"></i>
+  </div>
+
+  <script>
+    // Mobile menu toggle
+    const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+    const navLinks = document.querySelector('.nav-links');
+
+    mobileMenuBtn.addEventListener('click', () => {
+      navLinks.classList.toggle('active');
+      mobileMenuBtn.innerHTML = navLinks.classList.contains('active') ? 
+        '<i class="ri-close-line"></i>' : '<i class="ri-menu-line"></i>';
+    });
+
+    // Close mobile menu when clicking on a link
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      link.addEventListener('click', () => {
+        navLinks.classList.remove('active');
+        mobileMenuBtn.innerHTML = '<i class="ri-menu-line"></i>';
+      });
+    });
+
+    // Back to top button
+    const backToTopBtn = document.querySelector('.back-to-top');
+
+    window.addEventListener('scroll', () => {
+      if (window.pageYOffset > 300) {
+        backToTopBtn.classList.add('active');
+      } else {
+        backToTopBtn.classList.remove('active');
+      }
+    });
+
+    backToTopBtn.addEventListener('click', () => {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
+
+    // Smooth scrolling for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        
+        const targetId = this.getAttribute('href');
+        const targetElement = document.querySelector(targetId);
+        
+        if (targetElement) {
+          window.scrollTo({
+            top: targetElement.offsetTop - 80,
+            behavior: 'smooth'
+          });
+        }
+      });
+    });
+
+    // Create floating elements dynamically
+    const floatingContainer = document.querySelector('.floating-elements');
+    for (let i = 0; i < 8; i++) {
+      const element = document.createElement('div');
+      element.classList.add('floating-element');
+      
+      const size = Math.random() * 30 + 20;
+      const delay = Math.random() * 5;
+      const duration = Math.random() * 10 + 10;
+      
+      element.style.width = `${size}px`;
+      element.style.height = `${size}px`;
+      element.style.top = `${Math.random() * 100}%`;
+      element.style.left = `${Math.random() * 100}%`;
+      element.style.animationDelay = `${delay}s`;
+      element.style.animationDuration = `${duration}s`;
+      
+      floatingContainer.appendChild(element);
+    }
+
+    // Animate elements on scroll
+    const animateOnScroll = () => {
+      const elements = document.querySelectorAll('.card, .project-card, .skill-item, .course-item');
+      
+      elements.forEach(element => {
+        const elementPosition = element.getBoundingClientRect().top;
+        const screenPosition = window.innerHeight / 1.3;
+        
+        if (elementPosition < screenPosition) {
+          element.style.opacity = '1';
+          element.style.transform = 'translateY(0)';
+        }
+      });
+    };
+
+    // Set initial state for animation
+    document.querySelectorAll('.card, .project-card, .skill-item, .course-item').forEach(element => {
+      element.style.opacity = '0';
+      element.style.transform = 'translateY(20px)';
+      element.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+    });
+
+    window.addEventListener('scroll', animateOnScroll);
+    window.addEventListener('load', animateOnScroll);
+  </script>
 </body>
 
 </html>
